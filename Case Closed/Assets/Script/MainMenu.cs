@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     // [SerializeField] Toggle soundTgl;
     [SerializeField] GameObject settingPannel, mainmenuPannel;
     // [SerializeField] Slider music;
+
     public static MainMenu Instance;
 
     void Awake()
@@ -17,7 +18,7 @@ public class MainMenu : MonoBehaviour
         startBtn.onClick.AddListener(OnClickStart);
         settingBtn.onClick.AddListener(OnClickSetting);
         backBtn.onClick.AddListener(OnClickBack);
-        musicBtn.onClick.AddListener(OnClickMusic);
+        // musicBtn.onClick.AddListener(OnClickMusic);
         // quitBtn.onClick.AddListener(OnClickQuit);
         // soundTgl.onValueChanged.AddListener(SoundToggle);
 
@@ -29,10 +30,10 @@ public class MainMenu : MonoBehaviour
         // float isMusic = PlayerPrefs.GetFloat("Sound");
     }
 
-    // Load Choose Case Scence
+    // Load Intro Cutscene
     public void OnClickStart()
     {
-        SceneManager.LoadScene("ChooseCaseScene");
+        SceneManager.LoadScene("IntroCutscene");
     }
 
     // Load pannel Setting
@@ -42,17 +43,17 @@ public class MainMenu : MonoBehaviour
         mainmenuPannel.SetActive(false);
     }
 
-    public void OnClickMusic()
-    {
-        if (AudioListener.volume == 0)
-        {
-            AudioListener.volume = 1;
-            PlayerPrefs.SetInt("Music_Vol", 1);
-        } else {
-            AudioListener.volume = 0;
-            PlayerPrefs.SetInt("Music_Vol", 0);
-        }
-    }
+    // public void OnClickMusic()
+    // {
+    //     if (AudioListener.volume == 0)
+    //     {
+    //         AudioListener.volume = 1;
+    //         PlayerPrefs.SetInt("Music_Vol", 1);
+    //     } else {
+    //         AudioListener.volume = 0;
+    //         PlayerPrefs.SetInt("Music_Vol", 0);
+    //     }
+    // }
 
     // Load pannel Main Menu
     public void OnClickBack()
@@ -69,6 +70,7 @@ public class MainMenu : MonoBehaviour
         } else {
             PlayerPrefs.GetFloat("Music_Vol");
         }
+
         settingPannel.SetActive(false);
         mainmenuPannel.SetActive(true);
     }
